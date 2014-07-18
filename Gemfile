@@ -7,7 +7,8 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
-gem 'bootstrap-sass'          
+gem 'bootstrap-sass'
+gem 'devise'          
 
 
 group :development, :test do 
