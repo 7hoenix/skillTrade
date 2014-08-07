@@ -1,11 +1,14 @@
+<%= render 'pages/home' if !user_signed_in? %>
+
 <div id="posts" class="transitions-enabled">
-  asdf
-  <% Post.all.each do |post| %>
+  <% @posts.each do |post| %>
     <div class="box panel panel-default">
-      <%= link_to image_tag(post.image.url(:medium)), post %>
-      <div class="panel-body">
-        <p><%= post.description %></p>
-        <p><strong><%= post.user.name if post.user %></strong></p>
+    <div class="panel-body">
+    	<p><%= post.title %></p>
+  <p><strong><%= post.user.email if post.user %></strong></p>
+        <%= link_to new_post_bid_path(post) do %>
+        Bid
+        	<% end %>
         <% if post.user == current_user %>
           <div class="actions">
             <%= link_to edit_post_path(post) do %>
@@ -22,3 +25,4 @@
     </div>
   <% end %>
 </div>
+

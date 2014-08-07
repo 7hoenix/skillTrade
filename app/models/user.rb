@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
 
-	has_one :skillPoint
+	has_one :point
 	has_many :posts
+	has_many :bids
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

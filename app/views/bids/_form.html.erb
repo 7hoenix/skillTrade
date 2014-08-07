@@ -1,0 +1,21 @@
+<%= form_for @bid, html: {multipart: true} do |f| %>
+  <% if @bid.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bid.errors.count, "error") %> prohibited this bid from being saved:</h2>
+
+      <ul>
+      <% @bid.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :amount %><br>
+    <%= f.number_field :amount, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

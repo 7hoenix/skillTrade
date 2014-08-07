@@ -1,0 +1,74 @@
+Swipe File JUST IN CASE
+
+
+
+Taken from: views/posts/index.html.erb:
+
+
+<% Post.all.each do |post| %>
+    <div class="box panel panel-default">
+     <%= link_to image_tag(post.image.url(:medium)), post %>
+      <div class="panel-body">
+
+        <p><%= post.description %></p>
+        <p><strong><%= post.user.name if post.user %></strong></p>
+        <% if post.user == current_user %>
+          <div class="actions">
+            <%= link_to edit_post_path(post) do %>
+            <span class="glyphicon glyphicon-edit"></span>
+            Edit
+            <% end %>
+            <%= link_to post, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <span class="glyphicon glyphicon-trash"></span>
+            Delete
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+
+
+
+
+
+
+
+
+
+  <video width="320" height="240" controls>
+  <source src="movie.mp4" type="video/mp4">
+  <source src="movie.ogg" type="video/ogg">
+  <object data="movie.mp4" width="320" height="240">
+    <embed src="movie.swf" width="320" height="240">
+  </object> 
+</video>
+
+
+
+
+
+
+
+
+
+<select>
+<option val="1">I rally people together</option>
+<option val="2">I communicate visually</option>
+<option val="3">I create tools</option>
+<option val="4">I inspire people to action</option>
+  </select>   
+
+
+
+
+
+
+
+
+
+   <div class="field">
+    <%= f.label :image %><br>
+    <%= f.file_field :image, class: "form-control" %>
+  </div>

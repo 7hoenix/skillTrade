@@ -9,10 +9,14 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'bootstrap-sass'
-gem 'devise'          
+gem 'devise'
+gem 'masonry-rails', '~> 0.2.0'
+gem 'will_paginate', '~> 3.0.5'
+gem 'will_paginate-bootstrap'          
 
 
 group :development, :test do 
+	gem 'pry'
 	gem 'sqlite3'
 end
 

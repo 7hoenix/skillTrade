@@ -1,31 +1,32 @@
-<divclass="panel panel-default">  
-	<divclass="panel-heading">   
+<div class="panel panel-default">  
+	<div class="panel-heading">   
 		<h1>Sign up</h1>  
 	</div>  
-	<divclass="panel-body">
-
-	<select>
-<option val="1">I rally people together</option>
-<option val="2">I communicate visually</option>
-<option val="3">I create tools</option>
-<option val="4">I inspire people to action</option>
-	</select>    
-	<%= form_for(resource,:as=> resource_name,:url => registration_path(resource_name))do|f| %>      
+	<div class="panel-body">
+	<%= form_for(resource, :as=> resource_name, :url => registration_path(resource_name)) do |f| %>      
 	<%= devise_error_messages! %>      
-	<divclass="form-group">        
+	
+
+	<div class="form-group">
+		<%= f.label :name %>
+		<%= f.text_field :name, autofocus: true, class: "form-control" %>
+	</div>
+
+	<div class="form-group">        
 	<%= f.label :email %>        
 	<%= f.email_field :email, autofocus:true,class:"form-control" %>      
 </div>      
-<divclass="form-group">        
+<div class="form-group">        
 <%= f.label :password %>        
 <%= f.password_field :password,class:"form-control" %>      
-</div>      
-<divclass="form-group">        
+</div> 
+
+<div class="form-group">        
 <%= f.submit "Sign up",class:"btn btn-primary" %>      
 </div>    
 <%end %>  
 </div>  
-<divclass="panel-footer">    
+<div class="panel-footer">    
 <%= render "devise/shared/links" %>  
 </div>
 </div>

@@ -11,10 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140725234822) do
+ActiveRecord::Schema.define(version: 20140806230528) do
+
+  create_table "bids", force: true do |t|
+    t.integer  "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "post_id"
+    t.integer  "user_id"
+  end
+
+  add_index "bids", ["post_id"], name: "index_bids_on_post_id"
+  add_index "bids", ["user_id"], name: "index_bids_on_user_id"
 
   create_table "posts", force: true do |t|
     t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "bid_id"
+  end
+
+  add_index "posts", ["bid_id"], name: "index_posts_on_bid_id"
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id"
+
+  create_table "skill_points", force: true do |t|
+    t.integer  "howMany"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -32,6 +54,8 @@ ActiveRecord::Schema.define(version: 20140725234822) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "skillPoint"
+    t.string   "name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
