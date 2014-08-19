@@ -9,14 +9,14 @@ class BidsController < ApplicationController
   end
 
   def new
-    @bid = Bid.new
+    @bid = current_user.bids.build
   end
 
   def edit
   end
 
   def create
-    @bid = Bid.new(bid_params)
+    @bid = current_user.bids.build(bid_params)
       if @bid.save
         redirect_to @bid, notice: 'Bid was successfully created.' 
       else
@@ -40,6 +40,11 @@ class BidsController < ApplicationController
   private
     def set_bid
       @bid = Bid.find(params[:id])
+    end
+
+    def correct_user
+      @bid = current_user.bids.find_by(id: params[:id])
+      redirect_to bids_path, notice: "Not authorized to edit this bid" if @bid.nil?
     end
 
     def bid_params

@@ -72,3 +72,22 @@ Taken from: views/posts/index.html.erb:
     <%= f.label :image %><br>
     <%= f.file_field :image, class: "form-control" %>
   </div>
+
+
+
+
+
+
+
+
+
+
+
+  def create
+    @post = Post.new(title: params[:post][:title], user_id: current_user.id)
+    if @post.save
+      redirect_to @post, notice: 'Post was successfully created.'
+    else
+      render action: 'new'
+    end
+  end
