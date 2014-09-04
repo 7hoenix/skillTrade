@@ -9,6 +9,7 @@ class BidsController < ApplicationController
   end
 
   def new
+    @post = Post.find(params[:post_id])
     @bid = current_user.bids.build
   end
 
@@ -16,9 +17,10 @@ class BidsController < ApplicationController
   end
 
   def create
+    @post = Post.find(params[:post_id])
     @bid = current_user.bids.build(bid_params)
       if @bid.save
-        redirect_to @bid, notice: 'Bid was successfully created.' 
+        redirect_to [@post, @bid], notice: 'Bid was successfully created.' 
       else
         render :new
       end

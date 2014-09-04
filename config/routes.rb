@@ -7,8 +7,6 @@ Rails.application.routes.draw do
     resources :bids
   end
 
-  resources :bids
-
 
   devise_for :users
   root "posts#index"
